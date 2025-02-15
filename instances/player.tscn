@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0m5w6ioqao5n"]
+[gd_scene load_steps=17 format=3 uid="uid://c0m5w6ioqao5n"]
 
 [ext_resource type="Script" path="res://instances/player.gd" id="1_qknks"]
 [ext_resource type="Texture2D" uid="uid://wjcbulpmmem3" path="res://assets/light.png" id="2_dkine"]
@@ -153,6 +153,20 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8524"]
 radius = 14.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2urvo"]
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 80.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 98, 0)
+damping_min = 2.804
+damping_max = 2.804
+color = Color(0.909804, 0.270588, 0.215686, 1)
+
 [node name="player" type="CharacterBody2D"]
 texture_filter = 5
 collision_layer = 2
@@ -264,6 +278,15 @@ bus = &"sfx"
 unique_name_in_owner = true
 stream = ExtResource("9_iygjr")
 bus = &"sfx"
+
+[node name="part_blood" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_2urvo")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.7
 
 [connection signal="body_entered" from="pick_area" to="." method="_on_pick_area_body_entered"]
 [connection signal="body_exited" from="pick_area" to="." method="_on_pick_area_body_exited"]

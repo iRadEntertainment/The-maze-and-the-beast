@@ -1,11 +1,14 @@
 extends Node2D
 class_name GatheringArea
 
+var minotaur: Minotaur
+var player: Player
 
 var food_gathered : Array[PickUp]
 
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 

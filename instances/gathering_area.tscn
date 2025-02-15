@@ -39,6 +39,9 @@ texture = ExtResource("2_j4qbl")
 region_enabled = true
 region_rect = Rect2(0, 102, 16, 16)
 
+[node name="listed_food_items" type="Node2D" parent="props/table"]
+unique_name_in_owner = true
+
 [node name="stool" type="Sprite2D" parent="props"]
 texture_filter = 3
 position = Vector2(15, 5)

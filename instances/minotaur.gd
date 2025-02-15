@@ -39,7 +39,7 @@ var last_footstep_pos: Vector2
 var map_pos: Vector2i : set = _set_map_pos
 
 var player_in_range := false
-var player
+var player: Player
 
 
 func _ready():

@@ -8,7 +8,7 @@ class_name MiniMap
 const COLOR_BG_WALL = Color("#93604b")
 const COLOR_BG_MAZE = Color("#ffffd2")
 const COLOR_PLAYER = Color("#ff412f")
-const COLOR_MINOTAUR = Color("#ff412f")
+const COLOR_MINOTAUR = Color("#ec5600")
 const COLOR_PICK_UP = Color("#ff412f")
 
 var player_map_pos := Vector2i()

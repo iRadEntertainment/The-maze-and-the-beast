@@ -3,8 +3,14 @@
 [ext_resource type="Script" path="res://instances/minimap.gd" id="1_t2c0j"]
 
 [node name="minimap" type="PanelContainer"]
+texture_filter = 6
 custom_minimum_size = Vector2(64, 64)
 script = ExtResource("1_t2c0j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0.926451, 0.337256, 3.85046e-07, 1)
 
 [node name="maze" type="TextureRect" parent="."]
 unique_name_in_owner = true

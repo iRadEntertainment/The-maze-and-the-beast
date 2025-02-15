@@ -152,8 +152,10 @@ func die_from_trap(at_pos: Vector2):
 	is_dead = true
 	sfx_scream.play(0.66)
 	sfx_crunch.play(3.80)
+	%part_blood.emitting = true
 	position = at_pos
-	await sfx_crunch.finished
+	await get_tree().create_timer(2.5).timeout
+	Mng.hunger_left = Mng.MAX_HUNGER
 	get_tree().reload_current_scene()
 
 

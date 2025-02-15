@@ -8,17 +8,16 @@ class_name GeneratedMaze
 @export_range(1, 10, 1) var level : int = 1 : set = _set_level
 @export var is_darkness_on := false : set = _set_is_darkness_on
 
-@onready var tilemap : TileMap = %tilemap
 @onready var walls_coll : StaticBody2D = $walls_coll
 @onready var occluders = $occluders
 @onready var ceiling_lights = $ceiling_lights
 @onready var darkness = $darkness
 @onready var pick_ups = $pick_ups
 
-@onready var player = $player
+@onready var player: Player = $player
 @onready var torch = $player/torch
-@onready var minotaur = $minotaur
-@onready var gathering_area : GatheringArea = $gathering_area
+@onready var minotaur: Minotaur = $minotaur
+@onready var gathering_area: GatheringArea = $gathering_area
 
 
 
@@ -40,21 +39,28 @@ func _ready():
 		
 		if Mng.level_n == 1 and not Mng.is_debug_mode:
 			Mng.push_dialog("What did you do to get thrown in here with me?", true)
-			Mng.push_dialog("Don't even answere! I don't care!")
+			Mng.push_dialog("Don't even answer! I don't care!")
 			Mng.push_dialog("I'm not gonna eat you straight away, let's play a game instead...")
 			Mng.push_dialog("Find for me all the human remains that I've scattered around the place. If I will feel too hungry, then I'll come and eat you instead!")
 			Mng.push_dialog("In this maze there are %s pieces of food you can bring me. MOVE NOW, the clock is ticking!"%Mng.food_in_maze)
 
 
-func generate():
+func generate() -> void:
 	seed(hash(map_seed))
-	set_darkness()
+	set_references()
 	create_wall_collisions_and_occluders(Mng.maze_map_data)
 	position_start_area(Mng.maze_data)
 	set_item_in_maze()
 	add_pick_ups(Mng.maze_data)
 	add_ceiling_lights(Mng.maze_data)
 	populate_tilemap(Mng.maze_map_data)
+	set_darkness()
+
+
+func set_references() -> void:
+	gathering_area.player = player
+	gathering_area.minotaur = minotaur
+
 
 func set_item_in_maze():
 	Mng.food_collected = 0
@@ -83,10 +89,11 @@ func _input(event):
 
 
 func populate_tilemap(map_data: MazeMapData) -> void:
-	tilemap.clear()
-	tilemap.set_cells_terrain_connect(0, map_data.list_maze_floor, 0, 0)
-	tilemap.set_cells_terrain_connect(1, map_data.list_walls_top, 0, 1)
-	tilemap.set_cells_terrain_connect(1, map_data.list_walls_vert, 0, 2)
+	%tm_ground.clear()
+	%tm_walls.clear()
+	%tm_ground.set_cells_terrain_connect(map_data.list_maze_floor, 0, 0)
+	%tm_walls.set_cells_terrain_connect(map_data.list_walls_top, 0, 1)
+	%tm_walls.set_cells_terrain_connect(map_data.list_walls_vert, 0, 2)
 
 
 func create_wall_collisions_and_occluders(map_data: MazeMapData) -> void:

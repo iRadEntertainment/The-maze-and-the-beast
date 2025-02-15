@@ -137,6 +137,12 @@ func pick(player) -> void:
 		add_consumed_particles()
 		label_feedback()
 		queue_free()
+	if is_weapon:
+		player.is_holding = true
+		player.holded_obj = self
+		player.hold_sprite.region_rect = sprite.region_rect
+		label_feedback()
+		get_parent().remove_child(self)
 
 
 func label_feedback():
