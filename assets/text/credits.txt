@@ -1,0 +1,26 @@
+[b]Game design and programming[/b]
+
+Dario "iRad" De Vita
+
+Art
+
+Kenney - https://kenney.nl/assets/tiny-dungeon
+iRad
+[i]some art comes from modified AI generation[/i]
+
+
+Music
+
+https://opengameart.org/content/crystal-cave-song18
+Vrymaa - https://freesound.org/people/Vrymaa/sounds/722381/
+
+Ambient and SFX
+
+https://sonniss.com/gameaudiogdc (thank you Seano4D ps. it's the full PACK)
+
+potion sound: https://www.dafont.com/alagard.font
+impact gravel: https://freesound.org/people/Julien%20Nicolas/sounds/133783/
+blades whoosh - https://freesound.org/people/Artninja/sounds/725074/
+
+Font
+https://www.dafont.com/alagard.font

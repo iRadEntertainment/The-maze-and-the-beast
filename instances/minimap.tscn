@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxfxqxr82ru0s"]
+
+[ext_resource type="Script" path="res://instances/minimap.gd" id="1_t2c0j"]
+
+[node name="minimap" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_t2c0j")
+
+[node name="maze" type="TextureRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+
+[node name="player" type="TextureRect" parent="maze"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="minotaur" type="TextureRect" parent="maze"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

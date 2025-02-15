@@ -1,0 +1,479 @@
+[gd_scene load_steps=24 format=3 uid="uid://8haf1f0ltsfb"]
+
+[ext_resource type="Script" path="res://instances/minotaur.gd" id="1_0nxok"]
+[ext_resource type="Texture2D" uid="uid://v8b4rfw512en" path="res://assets/minotaur.png" id="2_82dus"]
+[ext_resource type="Gradient" uid="uid://dt6kxc502cw52" path="res://instances/minotaur_light_gradient.tres" id="2_iw3e8"]
+[ext_resource type="Texture2D" uid="uid://wjcbulpmmem3" path="res://assets/light.png" id="2_v3nvw"]
+[ext_resource type="Texture2D" uid="uid://cybeat1xwjjtj" path="res://assets/tilemap.png" id="3_is347"]
+[ext_resource type="AudioStream" uid="uid://dbrwsgwbaoda4" path="res://assets/sfx/sfx - eating-a-carrot.ogg" id="4_kigiq"]
+[ext_resource type="AudioStream" uid="uid://cqonhwcdjnoof" path="res://assets/sfx/sfx - scream agony.wav" id="7_48q4h"]
+
+[sub_resource type="Animation" id="Animation_k44jw"]
+resource_name = "kill"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.3, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knnex"]
+_data = {
+"kill": SubResource("Animation_k44jw")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epsim"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="Gradient" id="Gradient_6ami6"]
+colors = PackedColorArray(0.679015, 1.16717e-06, 3.85046e-07, 1, 0.744759, 0.262503, 0.395589, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j0223"]
+gradient = SubResource("Gradient_6ami6")
+
+[sub_resource type="Curve" id="Curve_a6i0w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ohcs1"]
+curve = SubResource("Curve_a6i0w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cw62p"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 2, 1)
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 48.78
+initial_velocity_max = 121.95
+gravity = Vector3(0, 98, 0)
+damping_min = 21.708
+damping_max = 60.488
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_ohcs1")
+color_initial_ramp = SubResource("GradientTexture1D_j0223")
+
+[sub_resource type="Animation" id="Animation_of5o0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/food_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/food_sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite/food_sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite/food_sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.916354)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.977778)]
+}
+
+[sub_resource type="Animation" id="Animation_ca5ey"]
+resource_name = "eating"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/food_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.1, 1.4, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(2, -25), Vector2(2, -25), Vector2(5, -26), Vector2(0, -25), Vector2(2, -25), Vector2(2, -25), Vector2(5, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/food_sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6, 0.9, 1.4, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.261799, 0.261799, 0.0, -0.261799, 0.261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx_eat:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("blood_part:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite/food_sprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_0ubf7"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.995556), Vector2(1, 1.01968)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite/food_sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gjsib"]
+resource_name = "killing"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blood_part:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 5.8, 8.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx_eat:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite/food_sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx_player_agony:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sprite/food_sprite:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(17, 153, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sprite/food_sprite:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.8, 2.5, 3.4, 4.7, 6.6, 7.4, 8.2, 8.7, 9.3, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(3, -26), Vector2(7, -24), Vector2(4, -25), Vector2(6, -22), Vector2(3, -23), Vector2(2, -24), Vector2(2, -22), Vector2(2, -25), Vector2(2, -24), Vector2(2, -22), Vector2(2, -24)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sprite/food_sprite:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.8, 3.4, 4.7, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.261799, 1.0472, 1.309, 1.0472, 1.309, 1.57079]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sprite/food_sprite:scale")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.5, 6.6, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.916354), Vector2(0.879485, 1.08049), Vector2(0.978555, 1.09092), Vector2(0.848199, 1.09092)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sprite:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.4, 1.6, 2.7, 2.9, 3.9, 5, 5.2, 6.3, 6.5, 7, 8.1, 8.3, 9.4, 9.6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.977778), Vector2(1, 0.933333), Vector2(1, 1), Vector2(1, 0.955555), Vector2(1, 1.02222), Vector2(1, 0.977778), Vector2(1, 0.933333), Vector2(1, 1), Vector2(1, 0.955555), Vector2(1, 1.02222), Vector2(1, 0.977778), Vector2(1, 0.933333), Vector2(1, 1), Vector2(1, 0.955555), Vector2(1, 1.02222), Vector2(1, 1)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_fade_to_black"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wghoj"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6e2ca"]
+_data = {
+"RESET": SubResource("Animation_of5o0"),
+"eating": SubResource("Animation_ca5ey"),
+"idle": SubResource("Animation_0ubf7"),
+"killing": SubResource("Animation_gjsib"),
+"walk": SubResource("Animation_wghoj")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maoyk"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fyvo4"]
+
+[node name="minotaur" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+collision_priority = 2.0
+motion_mode = 1
+script = ExtResource("1_0nxok")
+light_color_range = ExtResource("2_iw3e8")
+
+[node name="torch" type="PointLight2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(1, -1)
+color = Color(0.733333, 0, 0.247059, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("2_v3nvw")
+
+[node name="torch_anim" type="AnimationPlayer" parent="torch"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_knnex")
+}
+
+[node name="coll" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_epsim")
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.564706)
+scale = Vector2(0.10625, 0.05)
+texture = ExtResource("2_v3nvw")
+
+[node name="sprite" type="Sprite2D" parent="."]
+light_mask = 3
+texture_filter = 3
+scale = Vector2(1, 0.977778)
+texture = ExtResource("2_82dus")
+offset = Vector2(0, -18.87)
+
+[node name="food_sprite" type="Sprite2D" parent="sprite"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(2, -25)
+rotation = 0.261799
+scale = Vector2(1, 0.916354)
+texture = ExtResource("3_is347")
+region_enabled = true
+region_rect = Rect2(17, 153, 16, 16)
+
+[node name="blood_part" type="GPUParticles2D" parent="."]
+position = Vector2(3, -26)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_cw62p")
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.8
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6e2ca")
+}
+autoplay = "idle"
+
+[node name="sfx_eat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kigiq")
+pitch_scale = 0.6
+bus = &"sfx"
+
+[node name="sfx_player_agony" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_48q4h")
+pitch_scale = 0.85
+bus = &"sfx"
+
+[node name="pick_area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 10
+
+[node name="coll" type="CollisionShape2D" parent="pick_area"]
+shape = SubResource("CircleShape2D_maoyk")
+
+[node name="detect_sound_area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="coll" type="CollisionShape2D" parent="detect_sound_area"]
+shape = SubResource("CircleShape2D_fyvo4")
+
+[connection signal="body_entered" from="pick_area" to="." method="_on_pick_area_body_entered"]
+[connection signal="body_exited" from="pick_area" to="." method="_on_pick_area_body_exited"]

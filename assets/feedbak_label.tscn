@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl257e7axxa2m"]
+
+[ext_resource type="Theme" uid="uid://n61y7f8g4khh" path="res://assets/theme/main.tres" id="1_h1o32"]
+[ext_resource type="Script" path="res://assets/feedbak_label.gd" id="2_7ca5b"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3xrp2"]
+light_mode = 1
+
+[node name="feedbak_label" type="Label"]
+light_mask = 32
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_3xrp2")
+custom_minimum_size = Vector2(360, 128)
+offset_right = 360.0
+offset_bottom = 128.0
+pivot_offset = Vector2(180, 64)
+theme = ExtResource("1_h1o32")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.478431)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 10
+text = "this is a test"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_7ca5b")

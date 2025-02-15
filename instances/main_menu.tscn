@@ -1,0 +1,227 @@
+[gd_scene load_steps=10 format=3 uid="uid://itahxkuy3s1c"]
+
+[ext_resource type="Texture2D" uid="uid://dhj61lnhyrd01" path="res://assets/main_menu_bg.png" id="1_3nm1x"]
+[ext_resource type="Theme" uid="uid://n61y7f8g4khh" path="res://assets/theme/main.tres" id="1_kjjna"]
+[ext_resource type="Script" path="res://instances/main_menu.gd" id="2_gawl0"]
+[ext_resource type="Shader" path="res://assets/shaders/fog.gdshader" id="4_0it13"]
+[ext_resource type="Texture2D" uid="uid://nkr4nbx8wrvr" path="res://assets/theme/btn_refresh.png" id="5_gmm2v"]
+[ext_resource type="PackedScene" uid="uid://coi8vqc5p0siw" path="res://instances/pnl_audio.tscn" id="6_1lt86"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_51cuw"]
+noise_type = 3
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_12m3e"]
+seamless = true
+noise = SubResource("FastNoiseLite_51cuw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gksrx"]
+shader = ExtResource("4_0it13")
+shader_parameter/density = 0.351
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_12m3e")
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kjjna")
+script = ExtResource("2_gawl0")
+metadata/_edit_lock_ = true
+
+[node name="bg" type="TextureRect" parent="."]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3nm1x")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gksrx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.768627, 0.423529, 0.462745, 1)
+
+[node name="title" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 355.0
+offset_top = 30.0
+offset_right = 797.0
+offset_bottom = 218.0
+
+[node name="vb" type="VBoxContainer" parent="title"]
+layout_mode = 2
+
+[node name="lb_title" type="RichTextLabel" parent="title/vb"]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.152941, 0.121569, 0.247059, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 0.823529, 1)
+theme_override_colors/font_shadow_color = Color(0.402179, 0.340795, 0.594606, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]the [font_size=80][tornado radius=3.0 freq=1.0][color=25956a]Maze[/color][/tornado][/font_size]
+&
+the [color=ff412fbb][shake rate=40.0 level=15][font_size=80]Beast[/font_size][/shake][/color][/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="sub" type="RichTextLabel" parent="title/vb"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 0.823529, 1)
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=2.0][rainbow freq=1.0 sat=0.8 val=0.8][center]Jackie Codes Game Jam![/center][/rainbow][/wave]"
+fit_content = true
+
+[node name="pnl_settings" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 393.0
+offset_top = 277.0
+offset_right = -393.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vb" type="VBoxContainer" parent="pnl_settings"]
+layout_mode = 2
+
+[node name="pnl_audio" parent="pnl_settings/vb" instance=ExtResource("6_1lt86")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="btn_fullscreen" type="Button" parent="pnl_settings/vb"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="pnl_play" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 393.0
+offset_top = 277.0
+offset_right = -393.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vb" type="VBoxContainer" parent="pnl_play"]
+layout_mode = 2
+
+[node name="hb" type="HBoxContainer" parent="pnl_play/vb"]
+layout_mode = 2
+
+[node name="btn_shuffle" type="Button" parent="pnl_play/vb/hb"]
+texture_filter = 3
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+icon = ExtResource("5_gmm2v")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ln_seed" type="LineEdit" parent="pnl_play/vb/hb"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_next = NodePath("../btn_play")
+placeholder_text = "enter a seed here"
+max_length = 36
+expand_to_text_length = true
+
+[node name="btn_start" type="Button" parent="pnl_play/vb"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start"
+
+[node name="hb2" type="HBoxContainer" parent="pnl_play/vb"]
+layout_mode = 2
+
+[node name="lb" type="Label" parent="pnl_play/vb/hb2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "select levev"
+horizontal_alignment = 2
+
+[node name="sp_level" type="SpinBox" parent="pnl_play/vb/hb2"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+
+[node name="btns" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 160)
+layout_mode = 2
+offset_left = 22.0
+offset_top = 312.0
+offset_right = 278.0
+offset_bottom = 536.0
+
+[node name="btn_play" type="Button" parent="btns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play"
+
+[node name="btn_settings" type="Button" parent="btns"]
+layout_mode = 2
+text = "Settings"
+
+[node name="btn_credits" type="Button" parent="btns"]
+layout_mode = 2
+text = "Credits"
+
+[node name="btn_quit" type="Button" parent="btns"]
+layout_mode = 2
+text = "Quit"
+
+[node name="ck_debug" type="CheckBox" parent="btns"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Debug mode"
+
+[node name="lb_bot" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -26.0
+offset_right = -21.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "a game by iRadDev - Made in Godot 4.2"
+
+[connection signal="pressed" from="pnl_settings/vb/btn_fullscreen" to="." method="_on_btn_fullscreen_pressed"]
+[connection signal="pressed" from="pnl_play/vb/hb/btn_shuffle" to="." method="_on_btn_shuffle_pressed"]
+[connection signal="pressed" from="pnl_play/vb/btn_start" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="btns/btn_play" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="btns/btn_settings" to="." method="_on_btn_settings_pressed"]
+[connection signal="pressed" from="btns/btn_credits" to="." method="_on_btn_credits_pressed"]
+[connection signal="pressed" from="btns/btn_quit" to="." method="_on_btn_quit_pressed"]
+[connection signal="toggled" from="btns/ck_debug" to="." method="_on_ck_debug_toggled"]

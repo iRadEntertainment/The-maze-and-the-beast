@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnjdwu211kb7e"]
+
+[ext_resource type="Script" path="res://instances/consumed_part.gd" id="1_1cs1j"]
+[ext_resource type="AudioStream" uid="uid://rwrnftaccd3p" path="res://assets/sfx/sfx - potion-drink-swallow.wav" id="2_rkpyb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wd08v"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 39.03
+initial_velocity_max = 73.17
+gravity = Vector3(0, 98, 0)
+damping_min = 54.634
+damping_max = 74.147
+scale_min = 2.0
+scale_max = 4.0
+color = Color(0.364706, 0.678431, 0.882353, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[node name="consumed_part" type="Node2D"]
+script = ExtResource("1_1cs1j")
+
+[node name="part" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_wd08v")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.87
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rkpyb")
+bus = &"sfx"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dl1dsibqocaud"
+path="res://.godot/imported/sfx - gravel_impact.ogg-dd8e7c6dae55a27805ab1ec78972aead.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/sfx - gravel_impact.ogg"
+dest_files=["res://.godot/imported/sfx - gravel_impact.ogg-dd8e7c6dae55a27805ab1ec78972aead.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

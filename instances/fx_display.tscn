@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bokr6pc52pjuh"]
+
+[ext_resource type="Texture2D" uid="uid://cybeat1xwjjtj" path="res://assets/tilemap.png" id="1_r7d44"]
+[ext_resource type="Script" path="res://instances/fx_display.gd" id="1_rwarb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a68w"]
+atlas = ExtResource("1_r7d44")
+region = Rect2(102, 153, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12joc"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.576471, 0.376471, 0.294118, 0.67451)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct5v8"]
+bg_color = Color(0.145098, 0.584314, 0.415686, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[node name="fx_display" type="HBoxContainer"]
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+script = ExtResource("1_rwarb")
+
+[node name="ico" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = SubResource("AtlasTexture_1a68w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="progress" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_12joc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ct5v8")
+max_value = 1.0
+show_percentage = false
+
+[node name="empty" type="Control" parent="."]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2

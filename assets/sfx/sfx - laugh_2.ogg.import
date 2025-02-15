@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cqixc4uwrboak"
+path="res://.godot/imported/sfx - laugh_2.ogg-ba6f4b71ac2d60f2bbe71ad336082f52.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/sfx - laugh_2.ogg"
+dest_files=["res://.godot/imported/sfx - laugh_2.ogg-ba6f4b71ac2d60f2bbe71ad336082f52.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

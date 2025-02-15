@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://btik02exm3bx1"
+path="res://.godot/imported/sfx - gravel_thump.ogg-7b548fca0f1af2f519521f9ddbb71eec.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/sfx - gravel_thump.ogg"
+dest_files=["res://.godot/imported/sfx - gravel_thump.ogg-7b548fca0f1af2f519521f9ddbb71eec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

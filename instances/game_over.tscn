@@ -1,0 +1,151 @@
+[gd_scene load_steps=5 format=3 uid="uid://di20laawnhwnd"]
+
+[ext_resource type="Theme" uid="uid://n61y7f8g4khh" path="res://assets/theme/main.tres" id="1_3oo73"]
+[ext_resource type="Script" path="res://instances/game_over.gd" id="1_olosi"]
+[ext_resource type="Texture2D" uid="uid://dhj61lnhyrd01" path="res://assets/main_menu_bg.png" id="2_0fubw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x31w"]
+content_margin_left = 24.0
+content_margin_top = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+bg_color = Color(0.152941, 0.121569, 0.247059, 0.552941)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.254902, 0.184314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3oo73")
+script = ExtResource("1_olosi")
+metadata/_edit_lock_ = true
+
+[node name="bg" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.309804)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0fubw")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_lock_ = true
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="vb" type="VBoxContainer" parent="margin"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="margin/vb"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "You escaped the maze!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="grid" type="GridContainer" parent="margin/vb"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="lb_1" type="Label" parent="margin/vb/grid"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Time elapsed"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="lb_time" type="Label" parent="margin/vb/grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "12:35"
+vertical_alignment = 1
+
+[node name="lb_2" type="Label" parent="margin/vb/grid"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Maze completed"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="lb_mazes" type="Label" parent="margin/vb/grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "4/10"
+vertical_alignment = 1
+
+[node name="lb_3" type="Label" parent="margin/vb/grid"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Food provided"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="lb_food" type="Label" parent="margin/vb/grid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1300"
+vertical_alignment = 1
+
+[node name="pnl" type="PanelContainer" parent="margin/vb"]
+custom_minimum_size = Vector2(640, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1x31w")
+
+[node name="scroll" type="ScrollContainer" parent="margin/vb/pnl"]
+layout_mode = 2
+
+[node name="end_story" type="Label" parent="margin/vb/pnl/scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "You escaped the maze!"
+autowrap_mode = 3
+
+[node name="hb" type="HBoxContainer" parent="margin/vb"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="btn_back_to_main" type="Button" parent="margin/vb/hb"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back to main menu"
+
+[node name="btn_credits" type="Button" parent="margin/vb/hb"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+
+[connection signal="pressed" from="margin/vb/hb/btn_back_to_main" to="." method="_on_btn_back_to_main_pressed"]
+[connection signal="pressed" from="margin/vb/hb/btn_credits" to="." method="_on_btn_credits_pressed"]

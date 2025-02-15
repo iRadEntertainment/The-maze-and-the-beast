@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://rcbojnbrkqcc"]
+
+[ext_resource type="Script" path="res://instances/footstep.gd" id="1_0nivh"]
+[ext_resource type="Texture2D" uid="uid://bf8a6jc4vjr0k" path="res://assets/footsteps.png" id="1_lrbql"]
+[ext_resource type="AudioStream" uid="uid://dvl5q4p35ruq5" path="res://assets/sfx/sfx_rock_thud.wav" id="3_lbefd"]
+
+[node name="footstep" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.313726)
+texture_filter = 3
+texture = ExtResource("1_lrbql")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("1_0nivh")
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lbefd")
+volume_db = -6.0
+max_distance = 340.0
+attenuation = 0.554785
+bus = &"sfx"

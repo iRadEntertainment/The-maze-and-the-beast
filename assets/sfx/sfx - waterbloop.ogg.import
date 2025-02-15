@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1pamxwdjfffj"
+path="res://.godot/imported/sfx - waterbloop.ogg-e1bd343e8168e12d329ee1dc02cce36c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/sfx - waterbloop.ogg"
+dest_files=["res://.godot/imported/sfx - waterbloop.ogg-e1bd343e8168e12d329ee1dc02cce36c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

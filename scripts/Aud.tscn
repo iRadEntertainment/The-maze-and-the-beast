@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgn732g3sxi8k"]
+
+[ext_resource type="Script" path="res://scripts/Aud.gd" id="1_ywggp"]
+[ext_resource type="AudioStream" uid="uid://3e8qi4rpblbx" path="res://assets/sfx/mus - song18.mp3" id="2_ci65o"]
+[ext_resource type="AudioStream" uid="uid://u60qeevb5sid" path="res://assets/sfx/mus - vrymaa__recuperatio.wav" id="3_dppk6"]
+[ext_resource type="AudioStream" uid="uid://bllgl8je11yd8" path="res://assets/sfx/sfx_tuc.ogg" id="4_06md2"]
+[ext_resource type="AudioStream" uid="uid://b1tngad16brp6" path="res://assets/sfx/sfx_wood.wav" id="4_m1phg"]
+
+[node name="Aud" type="Node"]
+script = ExtResource("1_ywggp")
+
+[node name="mus_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ci65o")
+bus = &"music"
+
+[node name="mus_end" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dppk6")
+volume_db = -8.851
+autoplay = true
+bus = &"music"
+
+[node name="btn_press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_06md2")
+bus = &"ui"
+
+[node name="btn_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m1phg")
+bus = &"ui"

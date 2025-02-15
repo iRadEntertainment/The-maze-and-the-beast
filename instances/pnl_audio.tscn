@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://coi8vqc5p0siw"]
+
+[ext_resource type="Theme" uid="uid://n61y7f8g4khh" path="res://assets/theme/main.tres" id="1_dc8dm"]
+[ext_resource type="Script" path="res://instances/pnl_audio.gd" id="2_j65wj"]
+
+[node name="pnl_audio" type="PanelContainer"]
+custom_minimum_size = Vector2(350, 0)
+offset_left = 200.0
+offset_top = 140.0
+offset_right = 614.0
+offset_bottom = 350.0
+theme = ExtResource("1_dc8dm")
+script = ExtResource("2_j65wj")
+
+[node name="vb" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="pnl_title" type="Label" parent="vb"]
+layout_mode = 2
+text = "Audio settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="grid" type="GridContainer" parent="vb"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="lb_1" type="Label" parent="vb/grid"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+text = "master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sl_master" type="HSlider" parent="vb/grid"]
+unique_name_in_owner = true
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+
+[node name="lb_2" type="Label" parent="vb/grid"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+text = "sfx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sl_sfx" type="HSlider" parent="vb/grid"]
+unique_name_in_owner = true
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+
+[node name="lb_3" type="Label" parent="vb/grid"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+text = "music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sl_music" type="HSlider" parent="vb/grid"]
+unique_name_in_owner = true
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+
+[node name="lb_4" type="Label" parent="vb/grid"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+text = "ambient"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sl_ambient" type="HSlider" parent="vb/grid"]
+unique_name_in_owner = true
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+
+[connection signal="value_changed" from="vb/grid/sl_master" to="." method="_on_sl_master_value_changed"]
+[connection signal="value_changed" from="vb/grid/sl_sfx" to="." method="_on_sl_sfx_value_changed"]
+[connection signal="value_changed" from="vb/grid/sl_music" to="." method="_on_sl_music_value_changed"]
+[connection signal="value_changed" from="vb/grid/sl_ambient" to="." method="_on_sl_ambient_value_changed"]

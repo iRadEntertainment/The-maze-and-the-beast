@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0evy63si7a1j"]
+
+[ext_resource type="Script" path="res://instances/trap.gd" id="1_1nxid"]
+[ext_resource type="Texture2D" uid="uid://cybeat1xwjjtj" path="res://assets/tilemap.png" id="1_lpmd3"]
+[ext_resource type="AudioStream" uid="uid://dc13vd5qybdcl" path="res://assets/sfx/sfx - blade_whoosh.ogg" id="3_ogdna"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ooaj"]
+radius = 3.0
+
+[node name="trap" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1nxid")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("1_lpmd3")
+region_enabled = true
+region_rect = Rect2(187, 187, 16, 16)
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="coll" type="CollisionShape2D" parent="trigger"]
+shape = SubResource("CircleShape2D_4ooaj")
+
+[node name="sfx_snap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ogdna")
+bus = &"sfx"
+
+[connection signal="body_entered" from="trigger" to="." method="_on_trigger_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vnuw2h6ffjy8"
+path="res://.godot/imported/sfx - gravel_light.ogg-e14b8fb110f4f8bb4773139bc46309a9.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/sfx - gravel_light.ogg"
+dest_files=["res://.godot/imported/sfx - gravel_light.ogg-e14b8fb110f4f8bb4773139bc46309a9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

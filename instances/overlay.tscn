@@ -1,0 +1,274 @@
+[gd_scene load_steps=14 format=3 uid="uid://bsdp8gsf6ynk"]
+
+[ext_resource type="Script" path="res://instances/overlay.gd" id="1_0l057"]
+[ext_resource type="Theme" uid="uid://n61y7f8g4khh" path="res://assets/theme/main.tres" id="2_ikdhe"]
+[ext_resource type="Texture2D" uid="uid://c303pngxsotde" path="res://assets/minotaur_portrait.png" id="3_svppl"]
+[ext_resource type="Texture2D" uid="uid://cybeat1xwjjtj" path="res://assets/tilemap.png" id="3_y8igb"]
+[ext_resource type="AudioStream" uid="uid://bllgl8je11yd8" path="res://assets/sfx/sfx_tuc.ogg" id="4_guc2c"]
+[ext_resource type="PackedScene" uid="uid://dxfxqxr82ru0s" path="res://instances/minimap.tscn" id="4_vytrh"]
+[ext_resource type="PackedScene" uid="uid://dj66qg624pmyt" path="res://instances/game_menu.tscn" id="6_2521u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh455"]
+atlas = ExtResource("3_y8igb")
+region = Rect2(119, 187, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sme3"]
+bg_color = Color(0.576471, 0.376471, 0.294118, 0.615686)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llxlj"]
+bg_color = Color(0.145098, 0.584314, 0.415686, 1)
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ath6f"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.576471, 0.376471, 0.294118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntqor"]
+bg_color = Color(0.631373, 0.0980392, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ofpa"]
+content_margin_left = 8.0
+content_margin_top = 2.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.741176, 0.423529, 0.290196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.164706)
+shadow_size = 4
+anti_aliasing = false
+
+[node name="overlay" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_0l057")
+
+[node name="gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_ikdhe")
+metadata/_edit_lock_ = true
+
+[node name="black_fade" type="ColorRect" parent="gui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="vb" type="VBoxContainer" parent="gui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="cine_band1" type="ColorRect" parent="gui/vb"]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="margin" type="MarginContainer" parent="gui/vb"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="vb" type="VBoxContainer" parent="gui/vb/margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="top" type="Control" parent="gui/vb/margin/vb"]
+layout_mode = 2
+
+[node name="top" type="HBoxContainer" parent="gui/vb/margin/vb/top"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 4.0
+offset_right = 1136.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="empty" type="Control" parent="gui/vb/margin/vb/top/top"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lb_food" type="Label" parent="gui/vb/margin/vb/top/top"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "food 0/10"
+
+[node name="ico" type="TextureRect" parent="gui/vb/margin/vb/top/top"]
+texture_filter = 3
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_sh455")
+stretch_mode = 5
+
+[node name="hunger_bar" type="ProgressBar" parent="gui/vb/margin/vb/top/top"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_6sme3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_llxlj")
+max_value = 1.0
+value = 0.4
+show_percentage = false
+
+[node name="empty2" type="Control" parent="gui/vb/margin/vb/top/top"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lb_level" type="Label" parent="gui/vb/margin/vb/top/top"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "level 1/10"
+
+[node name="minimap" parent="gui/vb/margin/vb/top" instance=ExtResource("4_vytrh")]
+layout_mode = 0
+
+[node name="empty" type="Control" parent="gui/vb/margin/vb"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="pnl_dialog" type="PanelContainer" parent="gui/vb/margin/vb"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ath6f")
+
+[node name="hb" type="HBoxContainer" parent="gui/vb/margin/vb/pnl_dialog"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="pnl" type="PanelContainer" parent="gui/vb/margin/vb/pnl_dialog/hb"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ntqor")
+
+[node name="portrait" type="TextureRect" parent="gui/vb/margin/vb/pnl_dialog/hb/pnl"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_svppl")
+
+[node name="vb" type="PanelContainer" parent="gui/vb/margin/vb/pnl_dialog/hb"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lb_dialog" type="RichTextLabel" parent="gui/vb/margin/vb/pnl_dialog/hb/vb"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/outline_size = 6
+text = "After ascending the throne of the island of Crete, Minos competed with his brothers as ruler. Minos prayed to the sea god Poseidon to send him a snow-white bull as a sign of the god's favour."
+
+[node name="hb" type="HBoxContainer" parent="gui/vb/margin/vb/pnl_dialog/hb/vb"]
+layout_mode = 2
+alignment = 2
+
+[node name="tooltip_can_pick" type="Label" parent="gui/vb/margin/vb/pnl_dialog/hb/vb/hb"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ofpa")
+text = "space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lb" type="Label" parent="gui/vb/margin/vb/pnl_dialog/hb/vb/hb"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "to continue..."
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="sfx_text" type="AudioStreamPlayer" parent="gui/vb/margin/vb/pnl_dialog"]
+unique_name_in_owner = true
+bus = &"sfx"
+
+[node name="sfx_ui" type="AudioStreamPlayer" parent="gui/vb/margin/vb/pnl_dialog"]
+unique_name_in_owner = true
+stream = ExtResource("4_guc2c")
+bus = &"sfx"
+
+[node name="bot" type="HBoxContainer" parent="gui/vb/margin/vb"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="btn_prev_level" type="Button" parent="gui/vb/margin/vb/bot"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Previous level"
+
+[node name="btn_next_level" type="Button" parent="gui/vb/margin/vb/bot"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Next level"
+
+[node name="cine_band2" type="ColorRect" parent="gui/vb"]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="game_menu" parent="." instance=ExtResource("6_2521u")]
+visible = false
+
+[connection signal="pressed" from="gui/vb/margin/vb/bot/btn_prev_level" to="." method="_on_btn_prev_level_pressed"]
+[connection signal="pressed" from="gui/vb/margin/vb/bot/btn_next_level" to="." method="_on_btn_next_level_pressed"]
